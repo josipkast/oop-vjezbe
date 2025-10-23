@@ -13,14 +13,14 @@ int* fib_array(int n) {
     return a;
 }
 
-// -------------------- 2) “Vektor” bez std::vector --------------------
+// -------------------- 2) â€œVektorâ€ bez std::vector --------------------
 struct Vector {
     int* data;
-    int  size;      // logièka velièina
-    int  capacity;  // fizièka velièina
+    int  size;      // logiÃ¨ka veliÃ¨ina
+    int  capacity;  // fiziÃ¨ka veliÃ¨ina
 };
 
-// kreira novi vektor s poèetnim kapacitetom
+// kreira novi vektor s poÃ¨etnim kapacitetom
 Vector vector_new(int initial_capacity = 4) {
     if (initial_capacity < 1) initial_capacity = 1;
     Vector v;
@@ -30,7 +30,7 @@ Vector vector_new(int initial_capacity = 4) {
     return v;
 }
 
-// oslobağa memoriju vektora
+// oslobaÃ°a memoriju vektora
 void vector_delete(Vector& v) {
     delete[] v.data;
     v.data = nullptr;
@@ -59,25 +59,25 @@ void vector_pop_back(Vector& v) {
     if (v.size > 0) v.size--;
 }
 
-// vraæa prvi element
+// vraÃ¦a prvi element
 int vector_front(const Vector& v) {
     if (v.size == 0) { std::cerr << "Prazan vektor\n"; return 0; }
     return v.data[0];
 }
 
-// vraæa zadnji element
+// vraÃ¦a zadnji element
 int vector_back(const Vector& v) {
     if (v.size == 0) { std::cerr << "Prazan vektor\n"; return 0; }
     return v.data[v.size - 1];
 }
 
-// vraæa logièku velièinu
+// vraÃ¦a logiÃ¨ku veliÃ¨inu
 int vector_size(const Vector& v) { return v.size; }
 
 // -------------------- 3) Matrica na heapu --------------------
 struct Matrix {
     int rows, cols;
-    double* a; // èuvamo u 1D, indeks (r,c) -> r*cols + c
+    double* a; // Ã¨uvamo u 1D, indeks (r,c) -> r*cols + c
 };
 
 Matrix mat_new(int r, int c) {
@@ -139,7 +139,7 @@ Matrix mat_sub(const Matrix& A, const Matrix& B) {
     return C;
 }
 
-// mnoenje
+// mnoÅ¾enje
 Matrix mat_mul(const Matrix& A, const Matrix& B) {
     if (A.cols != B.rows) {
         std::cerr << "Dimenzije za mnozenje ne odgovaraju.\n";
@@ -185,7 +185,7 @@ int main() {
     for (int i = 0; i < n; ++i) std::cout << fib[i] << (i+1<n ? ' ' : '\n');
     delete[] fib;
 
-    // 2) “Vektor”
+    // 2) â€œVektorâ€
     std::cout << "\nTest vektora:\n";
     Vector v = vector_new(2);
     vector_push_back(v, 5);
@@ -224,7 +224,7 @@ int main() {
     std::cout << "S = A + D:\n"; mat_print(S);
     std::cout << "M = A - D:\n"; mat_print(M);
 
-    // èišæenje
+    // Ã¨iÅ¡Ã¦enje
     mat_delete(A);
     mat_delete(B);
     mat_delete(AT);
@@ -235,3 +235,4 @@ int main() {
 
     return 0;
 }
+
